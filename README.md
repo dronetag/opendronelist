@@ -17,7 +17,7 @@ A public community-driven list of drones and their common properties
 
 ## Formats available
 
-The list will be available in all common open formats, such as JSON, CSV, ... TODO
+The list is avilable in CSV file which is then converted into three JSON files - found [here](https://github.com/dronetag/opendronelist/releases/latest)
 
 ## Who use opendronelist
 
