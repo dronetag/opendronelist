@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenDroneList</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+  </head>
+  <body>
+    <main>
+      <h1>OpenDroneList</h1>
+
+      <p>Open-source list of drones and their properties</p>
+
+      <p>
+        <a href="https://github.com/dronetag/opendronelist"><span class="icon-github"></span> View or edit on GitHub</a>
+      </p>
+
+      <p>Available in various formats:</p>
+
+      <div class="formats">
+        <ul>
+          <li>
+            <a href="https://github.com/dronetag/opendronelist/blob/master/list.csv"
+              ><span class="icon-file-text-o"></span> Download in CSV</a
+            >
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="https://github.com/dronetag/opendronelist/releases/latest/download/manufacturers.json"
+              ><span class="icon-file-code-o"></span> Download Manufacturers in JSON</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/dronetag/opendronelist/releases/latest/download/manufacturersWithModels.json"
+              ><span class="icon-file-code-o"></span> Download Manufacturers with Models in JSON</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/dronetag/opendronelist/releases/latest/download/models.json"
+              ><span class="icon-file-code-o"></span> Download Drone Models in JSON</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <table class="table table-bordered table-hover table-condensed">
+      
+        <thead>
+          <tr>
+            <td>Manufacturer</td>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Class</td>
+            <td>Weight</td>
+            <td>Max Takeoff</td>
+            <td>Endurance</td>
+            <td>Has Camera</td>
+            <td>Is Toy</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for model in models %}
+            <tr>
+              <td>{{model.manufacturer}}</td>
+              <td>{{model.name}}</td>
+              <td>{{model.type}}</td>
+              <td>{{model.class}}</td>
+              <td align="right">{{model.weight}}</td>
+              <td align="right">{{model.max_takeoff}}</td>
+              <td align="right">{{model.endurance}}</td>
+              <td>{{model.has_camera}}</td>
+              <td>{{model.is_toy}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <footer>
+        Created and maintained by
+        <a href="https://dronetag.cz">Dronetag</a>
+      </footer>
+    </main>
+  </body>
+</html>

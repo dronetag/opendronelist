@@ -13,68 +13,133 @@ permissions:
   id-token: write
 
 jobs:
-  convert_and_release:
-    name: Convert CSV to files
+  convert_to_json:
+    name: Convert CSV to JSON files
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+
+      - name: execute py script # run the run.py to get the latest data
+        run: |
+          python convertors/json_convertor.py
+
+      - name: Upload converted files
+        uses: actions/upload-artifact@v1
+        with:
+          name: json
+          path: ./out
+
+  convert_to_html:
+    name: Convert CSV to HTML template
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+
+      - name: Install Jinja2
+        run: |
+          pip install Jinja2
+
+      - name: execute py script # run the run.py to get the latest data
+        run: |
+          python convertors/html_convertor.py
+
+      - name: Upload converted files
+        uses: actions/upload-artifact@v1
+        with:
+          name: html
+          path: ./out
+
+  release:
+    name: Create a release
+    needs: [convert_to_html, convert_to_json]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download JSON artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: json
+          path: ./json
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d-%H%M')"
+
+      - name: Release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ steps.date.outputs.date }}
+          tag_name: ${{ steps.date.outputs.date }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload manufacturers artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./json/manufacturers.json
+          asset_name: manufacturers.json
+          asset_content_type: application/json
+
+      - name: Upload manufacturers with models artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./json/manufacturersWithModels.json
+          asset_name: manufacturersWithModels.json
+          asset_content_type: application/json
+
+      - name: Upload models artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./json/models.json
+          asset_name: models.json
+          asset_content_type: application/json
+
+  deploy:
+    name: Deploy to Github pages
+    needs: [convert_to_html, convert_to_json]
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content to github runner.
-      - name: setup python
-        uses: actions/setup-python@v2
+      - name: Download JSON artifact
+        uses: actions/download-artifact@v3
         with:
-          python-version: "3.10"
-      - name: execute py script # run the run.py to get the latest data
+          name: json
+          path: ./json
+      - name: Download HTML artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: html
+          path: ./html
+      - name: Merge artifacts for upload
         run: |
-          python convertors/convertor.py
-
-      # - name: Get current date
-      #   id: date
-      #   run: echo "::set-output name=date::$(date +'%Y%m%d-%H%M')"
-      # - name: Release
-      #   uses: actions/create-release@v1
-      #   id: create_release
-      #   with:
-      #     draft: false
-      #     prerelease: false
-      #     release_name: ${{ steps.date.outputs.date }}
-      #     tag_name: ${{ steps.date.outputs.date }}
-      #     body: "Expanded drone manufacturer and drone models database"
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
-
-      # - name: Upload manufacturers artifact
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./out/manufacturers.json
-      #     asset_name: manufacturers.json
-      #     asset_content_type: application/json
-
-      # - name: Upload manufacturers with models artifacts
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./out/manufacturersWithModels.json
-      #     asset_name: manufacturersWithModels.json
-      #     asset_content_type: application/json
-
-      # - name: Upload models artifacts
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./out/models.json
-      #     asset_name: models.json
-      #     asset_content_type: application/json
-
+          mkdir out
+          cp -a ./json/. ./out/
+          cp -a ./html/. ./out/
       - name: Upload converted files
         uses: actions/upload-pages-artifact@v0.1.0
         with:
