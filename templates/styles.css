@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;400;700&display=swap');
+
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ozqjrw');
+  src:  url('fonts/icomoon.eot?ozqjrw#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ozqjrw') format('truetype'),
+    url('fonts/icomoon.woff?ozqjrw') format('woff'),
+    url('fonts/icomoon.svg?ozqjrw#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+html {
+    font: 400 16px/1.2em 'Titillium Web', sans-serif;
+}
+
+a {
+    color: #0868B7;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 200;
+}
+
+footer {
+    margin: 2rem 0;
+    padding: 2rem 0;
+    border-top: thin solid #d0d7de;
+}
+
+main table {
+    margin: 2rem 0;
+    width: 100%;
+}
+
+table, table td, table th {
+    border: thin solid #d0d7de;
+    border-collapse:  collapse;
+    padding: 0.3em 0.6em;
+    font-size: 14px;
+}
+
+table th {
+    text-align: left;
+    background: #f6f8fa;
+}
+
+table th .icon-info {
+    margin-left: 0.5em;
+    color: #808890;
+}
+
+.formats {
+    display: flex;
+}
+
+.formats ul {
+    list-style: none;
+    margin: 0;
+    margin-right: 3rem;
+    padding: 0;
+}
+
+.formats ul li {
+    margin: 0.5em 0;
+}
+
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-info:before {
+  content: "\e906";
+}
+.icon-file-archive-o:before {
+  content: "\e902";
+}
+.icon-file-code-o:before {
+  content: "\e903";
+}
+.icon-file-excel-o1:before {
+  content: "\e904";
+}
+.icon-file-text-o:before {
+  content: "\e905";
+}
+.icon-file-excel-o:before {
+  content: "\e900";
+}
+.icon-github:before {
+  content: "\e901";
+}
