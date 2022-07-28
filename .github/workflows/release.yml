@@ -29,7 +29,7 @@ jobs:
         run: |
           python convertors/json_convertor.py
 
-      - name: Upload converted files
+      - name: Upload converted files # Upload 3 JSON files outputted from py script
         uses: actions/upload-artifact@v1
         with:
           name: json
@@ -47,7 +47,7 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install Jinja2
+      - name: Install Jinja2 # For putting data into HTML template
         run: |
           pip install Jinja2
 
@@ -55,7 +55,7 @@ jobs:
         run: |
           python convertors/html_convertor.py
 
-      - name: Upload converted files
+      - name: Upload converted files # Upload html and CSS + fonts outputted from py script
         uses: actions/upload-artifact@v1
         with:
           name: html
@@ -72,11 +72,11 @@ jobs:
           name: json
           path: ./json
 
-      - name: Get current date
+      - name: Get current date # Get formatted date for release tag creation
         id: date
         run: echo "::set-output name=date::$(date +'%Y%m%d-%H%M')"
 
-      - name: Release
+      - name: Release # Create a release
         uses: actions/create-release@v1
         id: create_release
         with:
@@ -87,7 +87,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Upload manufacturers artifact
+      - name: Upload manufacturers artifact # Attach manufacturers JSON to release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -97,7 +97,7 @@ jobs:
           asset_name: manufacturers.json
           asset_content_type: application/json
 
-      - name: Upload manufacturers with models artifacts
+      - name: Upload manufacturers with models artifacts # Attach manufacturers with models JSON to release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -107,7 +107,7 @@ jobs:
           asset_name: manufacturersWithModels.json
           asset_content_type: application/json
 
-      - name: Upload models artifacts
+      - name: Upload models artifacts # Attach models JSON to release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -125,17 +125,17 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Download JSON artifact
+      - name: Download JSON artifact # Download JSON out file
         uses: actions/download-artifact@v3
         with:
           name: json
           path: ./json
-      - name: Download HTML artifact
+      - name: Download HTML artifact # Download HTML out file
         uses: actions/download-artifact@v3
         with:
           name: html
           path: ./html
-      - name: Merge artifacts for upload
+      - name: Merge artifacts for upload # Merging the two artifacts into one, which is then uploaded to pages
         run: |
           mkdir out
           cp -a ./json/. ./out/
@@ -145,7 +145,7 @@ jobs:
         with:
           name: github-pages
           path: ./out
-      - name: Deploy Github Pages
+      - name: Deploy Github Pages # Deploy to pages
         uses: actions/deploy-pages@v1
         id: deployment
         with:
