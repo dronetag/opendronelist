@@ -7,6 +7,9 @@ dir_path = 'out'
 
 os.makedirs(dir_path, exist_ok=True)
 
+def convert_to_bool(str: str):
+    return str.lower() == 'true' if str and len(str) > 0 else None
+
 with open('list.csv') as csv_file:
     # Read csv - maybe input as a arg
     csv_reader = csv.reader(csv_file, delimiter=',')
@@ -48,8 +51,8 @@ with open('list.csv') as csv_file:
         weight = row[parameters.get('weight')]
         max_takeoff = row[parameters.get('max_takeoff')]
         endurance = row[parameters.get('endurance')]
-        has_camera = row[parameters.get('has_camera')]
-        is_toy = row[parameters.get('is_toy')]
+        has_camera = convert_to_bool(row[parameters.get('has_camera')])
+        is_toy = convert_to_bool(row[parameters.get('is_toy')])
 
         models.append({'manufacturer': manufacturer, 'name': name, 'uas_class': uas_class,
                        "weight": weight, 'max_takeoff': max_takeoff, 'endurance': endurance, 'has_camera': has_camera, 'is_toy': is_toy})

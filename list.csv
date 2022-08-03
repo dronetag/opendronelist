@@ -5,7 +5,7 @@ manufacturer,name,class,weight,max_takeoff,endurance,has_camera,is_toy
 3D Robotics,Solo,none,1510,1510,25,,
 3D Robotics,X8-M,none,2600,2600,14,,
 3D Robotics,X8+,none,2600,2600,15,,
-AirWood,CUBEE,none,80,80,8,,0
+AirWood,CUBEE,none,80,80,8,,false
 Autel,Evo,none,863,1000,30,,
 Autel,Evo II,none,1150,1999,40,,
 Autel,Evo 2 Pro,none,1191,1999,40,,
@@ -46,10 +46,10 @@ DJI,Mavic 2 Pro,none,907,907,31,,
 DJI,Mavic 2 Zoom,none,905,905,31,,
 DJI,Mavic Air,none,430,430,21,,
 DJI,Mavic Air 2,none,570,570,34,,
-DJI,Mavic Mini,none,249,249,30,1,0
+DJI,Mavic Mini,none,249,249,30,true,false
 DJI,Mavic Pro,none,734,734,27,,
 DJI,Mavic Pro Platinum,none,734,734,30,,
-DJI,Mini 2,none,242,242,31,1,0
+DJI,Mini 2,none,242,242,31,true,false
 DJI,Phantom 1,none,800,800,10,,
 DJI,Phantom 2,none,1000,1000,25,,
 DJI,Phantom 2 Vision,none,1160,1160,25,,
@@ -72,28 +72,28 @@ DJI,Spreading Wings S1000+,none,4400,11000,15,,
 DJI,Spreading Wings S800,none,2600,7000,22,,
 DJI,Spreading Wings S800 EVO,none,3700,8000,22,,
 DJI,Spreading Wings S900,none,3300,8200,18,,
-DJI,Tello,none,80,80,13,1,0
-DJI,Tello EDU,none,80,80,13,1,0
-DJI,Tello Iron Man,none,80,80,13,1,0
+DJI,Tello,none,80,80,13,true,false
+DJI,Tello EDU,none,80,80,13,true,false
+DJI,Tello Iron Man,none,80,80,13,true,false
 GoPro,Karma,none,1006,1006,20,,
 Hubsan,Zino,none,700,700,45,,
 Hubsan,Zino Pro,none,700,700,43,,
 Hubsan,H109S X4 Pro,none,1400,1400,40,,
-LaTrax,Alias,none,100,100,12,0,0
+LaTrax,Alias,none,100,100,12,false,false
 Parrot,Anafi,none,320,320,25,,
 Parrot,AR Drone,none,420,420,12,,
 Parrot,AR Drone 2.0,none,420,420,12,,
 Parrot,Bebop,none,400,400,60,,
 Parrot,Bebop 2,none,500,500,60,,
 Parrot,Disco,none,750,750,45,,
-Syma,X5C,none,200,200,10,1,0
-Syma,X25 Pro,none,200,200,7,1,0
+Syma,X5C,none,200,200,10,true,false
+Syma,X25 Pro,none,200,200,7,true,false
 Syma,X8 Pro,none,620,620,15,,
 TBS,GEMINI,none,370,370,10,,
 Walkera,Vitus 320,none,890,890,25,,
 Xiaomi,FIMI X8,none,790,790,35,,
 Xiaomi,Mi Drone 4K,none,1390,1390,27,,
-Xiaomi,Mi Drone Mini,none,88,88,10,1,0
+Xiaomi,Mi Drone Mini,none,88,88,10,true,false
 Yuneec,Breeze,none,385,385,12,,
 Yuneec,H850-RTK,none,5800,9300,65,,
 Yuneec,Mantis G,none,490,490,33,,

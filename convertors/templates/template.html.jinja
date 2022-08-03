@@ -69,8 +69,12 @@
               <td align="right">{{model.weight}}</td>
               <td align="right">{{model.max_takeoff}}</td>
               <td align="right">{{model.endurance}}</td>
-              <td>{{model.has_camera}}</td>
-              <td>{{model.is_toy}}</td>
+              <td>
+                {{ ('✔️ Yes' if model.has_camera else '❌ No') if model.has_camera is not none }}
+              </td>
+              <td>
+                {{ ('✔️ Yes' if model.is_toy else '❌ No') if model.is_toy is not none }}
+              </td>
             </tr>
           {% endfor %}
         </tbody>
