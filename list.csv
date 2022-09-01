@@ -84,6 +84,7 @@ Hubsan,Zino,none,700,700,45,,
 Hubsan,Zino Pro,none,700,700,43,,
 Hubsan,H109S X4 Pro,none,1400,1400,40,,
 LaTrax,Alias,none,100,100,12,false,false
+MAVTech,Q4X,none,3200,8500,30,yes,no
 Parrot,Anafi,none,320,320,25,,
 Parrot,AR Drone,none,420,420,12,,
 Parrot,AR Drone 2.0,none,420,420,12,,
