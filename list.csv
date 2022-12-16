@@ -6,6 +6,7 @@ manufacturer,name,class,weight,max_takeoff,endurance,has_camera,is_toy
 3D Robotics,X8-M,none,2600,2600,14,,
 3D Robotics,X8+,none,2600,2600,15,,
 AirWood,CUBEE,none,80,80,8,,false
+ANT-X,ARIES,C3,7000,11000,33,false,false
 Autel,Evo,none,863,1000,30,,
 Autel,Evo II,none,1150,1999,40,,
 Autel,Evo 2 Pro,none,1191,1999,40,,
