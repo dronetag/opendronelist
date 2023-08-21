@@ -5,19 +5,24 @@ manufacturer,name,class,weight,max_takeoff,endurance,has_camera,is_toy
 3D Robotics,Solo,none,1510,1510,25,,
 3D Robotics,X8-M,none,2600,2600,14,,
 3D Robotics,X8+,none,2600,2600,15,,
+AgEagle,SENSEFLY eBee,C2,1600,1600,55,,
 AirWood,CUBEE,none,80,80,8,,false
 ANT-X,ARIES,none,7000,11000,33,false,false
+Autel,Dragonfish,none,7000,8500,120,,
 Autel,Evo,none,863,1000,30,,
-Autel,Evo II,none,1150,1999,40,,
-Autel,Evo 2 Pro,none,1191,1999,40,,
 Autel,Evo 2 Dual,none,1150,2000,40,,
 Autel,Evo 2 Dual 640T,none,1150,2000,40,,
+Autel,Evo 2 Pro,none,1191,1999,40,,
+Autel,Evo II,none,1150,1999,40,,
 Autel,Evo Lite,none,835,835,40,,
 Autel,Evo Lite+,none,835,835,40,,
-Autel,Dragonfish,none,7000,8500,120,,
-Autel,X-Star,none,1420,1420,25,,
+Autel,EVO MAX 4T,none,3500,3500,42,,
 Autel,Kestrel,none,2000,14000,120,,
+Autel,X-Star,none,1420,1420,25,,
 Autel,X-Star Premium,none,1420,1420,25,,
+Codev Dynamics,Aquila 2,none,2520,4000,68,,
+Codev Dynamics,Aquila 3,none,2850,5850,80,,
+Delair,UX11 UAV,C6,1600,1600,80,,
 DJI,Agras MG-1,none,22500,24500,22,,
 DJI,Agras MG-1P,none,23800,24800,20,,
 DJI,Agras MG-1P RTK,none,23900,24800,20,,
@@ -45,9 +50,10 @@ DJI,Matrice 210,none,3840,6140,34,,
 DJI,Matrice 210 RTK,none,4420,6140,33,,
 DJI,Matrice 210 RTK V2,none,4910,6140,33,,
 DJI,Matrice 210 V2,none,4800,6140,34,,
-DJI,Matrice 30,none,3770,3998,41,,
-DJI,Matrice 30T,none,3770,3998,41,,
+DJI,Matrice 30,C2,3770,3998,41,,
+DJI,Matrice 30T,C2,3770,3998,41,,
 DJI,Matrice 300 RTK,none,6300,9000,55,,
+DJI,Matrice 350 RTK,C3,9200,9200,55,,
 DJI,Matrice 600,none,9100,15100,38,,
 DJI,Matrice 600 Pro,none,9500,15500,38,,
 DJI,Mavic 2 Enterprise,none,905,905,31,,
@@ -69,8 +75,9 @@ DJI,Mavic Mini,none,249,249,30,true,false
 DJI,Mavic Pro,none,734,734,27,,
 DJI,Mavic Pro Platinum,none,734,734,30,,
 DJI,Mini 2,none,242,242,31,true,false
-DJI,Mini 3,none,248,248,51,true,false
-DJI,Mini 3 Pro,none,249,249,47,true,false
+DJI,Mini 2 SE,C0,246,246,31,true,
+DJI,Mini 3,C0,248,248,51,true,false
+DJI,Mini 3 Pro,C0,249,249,47,true,false
 DJI,Phantom 1,none,800,800,10,,
 DJI,Phantom 2,none,1000,1000,25,,
 DJI,Phantom 2 Vision,none,1160,1160,25,,
@@ -109,6 +116,7 @@ Parrot,AR Drone 2.0,none,420,420,12,,
 Parrot,Bebop,none,400,400,60,,
 Parrot,Bebop 2,none,500,500,60,,
 Parrot,Disco,none,750,750,45,,
+Quantum-Systems,Trinity F90+,C3,5500,5500,90,,
 Sony,ARS-S1,none,3150,7450,30,true,false
 Syma,X5C,none,200,200,10,true,false
 Syma,X25 Pro,none,200,200,7,true,false
