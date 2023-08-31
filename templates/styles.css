@@ -37,6 +37,12 @@ h1 {
     font-weight: 200;
 }
 
+h2 {
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 200;
+}
+
 footer {
     margin: 2rem 0;
     padding: 2rem 0;
@@ -78,6 +84,77 @@ table th .icon-info {
 
 .formats ul li {
     margin: 0.5em 0;
+}
+
+form {
+  display: grid;
+  gap: 20px;
+  border: solid 1px #d0d7de;
+  grid-template-columns: 1fr;
+  padding: 20px;
+  max-width: 610px;
+}
+
+form .formRow {
+  @media (min-width: 610px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap:20px
+  }
+  &.radio {
+    padding-bottom: 10px;
+    gap:0px;
+    border-bottom: solid 1px #d0d7de;
+  }
+}
+
+form .itemWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  @media (min-width: 610px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 250px;
+  }
+  &.radio {
+    display: block;
+    width: 100%;
+  }
+  &#source {
+    @media (min-width: 610px) {
+      width: 100%;
+    }
+  }
+}
+
+form .helpText {
+  width: 100%;
+  font-size: 12px;
+}
+
+form input {
+  height: 20px;
+  margin-bottom: 1rem;
+  &[type="radio"] {
+    margin-bottom: 0rem;
+    height: max-content;
+  }
+  @media (min-width: 610px) {
+    margin-bottom: 0rem;
+  }
+}
+
+form select {
+  height: 20px;
+  margin-bottom: 1rem;
+  @media (min-width: 610px) {
+    margin-bottom: 0rem;
+  }
 }
 
 
