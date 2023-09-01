@@ -57,3 +57,6 @@ with open('list.csv') as csv_file:
         shutil.copytree('templates/fonts', 'out/fonts')
     except:
         pass
+    # copy all files from the templates/pages folder into out
+    for file in os.listdir('templates/pages'):
+        shutil.copy(os.path.join('templates/pages', file), 'out')
