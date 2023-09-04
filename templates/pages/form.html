@@ -34,7 +34,9 @@
           }
         );
         if (response.ok) {
-          window.location = "form_success.html";
+          const json = await response.json();
+          console.log(json);
+          window.location = "form_success.html?url=" + json.url;
         } else {
           window.location = "form_failed.html";
         }

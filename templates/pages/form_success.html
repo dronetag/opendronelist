@@ -7,8 +7,16 @@
     <title>OpenDroneList</title>
     <link rel="stylesheet" href="styles.css" type="text/css" />
     <script>
-      onsubmit = function () {
-        document.getElementById("submit").disabled = true;
+      onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log(urlParams);
+        const url = urlParams.get("url");
+        const a = document.createElement("a");
+        a.href = url;
+        a.target = "_blank";
+        a.textContent = url.replace("https://", "");
+        const thanks = document.getElementById("thanks");
+        thanks.appendChild(a);
       };
     </script>
   </head>
@@ -66,6 +74,10 @@
           Thank you for your contribution! The team should add your submission
           to the list soon.
         </h2>
+        <h3>
+          You can track your submission at
+          <span id="thanks" onload="onload()"></span>
+        </h3>
         <ul>
           <li>
             <a href="https://dronetag.github.io/opendronelist/">Main page</a>
