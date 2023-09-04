@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenDroneList</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <script>
+      onsubmitload = function () {
+        document.getElementById("submit").disabled = false;
+      };
+      onloadingelementload = function () {
+        document.getElementById("loading").style.display = "none";
+      };
+      onsubmit = async function (e) {
+        e.preventDefault();
+        document.getElementById("submit").disabled = true;
+        // Mark as loading
+        document.getElementById("loading").style.display = "block";
+
+        var formData = new FormData(e.target);
+        var jsonData = {};
+        formData.forEach(function (value, key) {
+          jsonData[key] = value;
+        });
+        jsonData = JSON.stringify(jsonData);
+
+        const response = await fetch(
+          "https://2c6j6mfaxvg2on6aucm3otofde0fqvmi.lambda-url.eu-north-1.on.aws/",
+          {
+            method: "POST",
+            body: jsonData,
+          }
+        );
+        if (response.ok) {
+          const json = await response.json();
+          console.log(json);
+          window.location = "form_success.html?url=" + json.url;
+        } else {
+          window.location = "form_failed.html";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>OpenDroneList</h1>
+
+      <p>Open-source list of drones and their properties</p>
+
+      <p>
+        <a href="https://github.com/dronetag/opendronelist"
+          ><span class="icon-github"></span> View or edit on GitHub</a
+        >
+      </p>
+
+      <p>Available in various formats:</p>
+
+      <div class="formats">
+        <ul>
+          <li>
+            <a
+              href="https://github.com/dronetag/opendronelist/blob/master/list.csv"
+              ><span class="icon-file-text-o"></span> Download in CSV</a
+            >
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/dronetag/opendronelist/releases/latest/download/manufacturers.json"
+              ><span class="icon-file-code-o"></span> Download Manufacturers in
+              JSON</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/dronetag/opendronelist/releases/latest/download/manufacturersWithModels.json"
+              ><span class="icon-file-code-o"></span> Download Manufacturers
+              with Models in JSON</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/dronetag/opendronelist/releases/latest/download/models.json"
+              ><span class="icon-file-code-o"></span> Download Drone Models in
+              JSON</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!DOCTYPE html>
+
+      <form onsubmit="onsubmit()">
+        <div style="margin-bottom: -1rem; margin-left: 0.25rem">I wish to:</div>
+        <div class="formRow radio">
+          <div class="itemWrapper radio">
+            <input
+              type="radio"
+              id="create"
+              value="create"
+              name="update"
+              checked
+            />
+            <label for="create">Add a new drone</label>
+          </div>
+          <div class="itemWrapper radio">
+            <input type="radio" id="update" value="update" name="update" />
+            <label for="update">
+              Update information about an existing drone</label
+            >
+          </div>
+        </div>
+
+        <div class="formRow">
+          <div class="itemWrapper">
+            <label for="manufacturer">*Manufacturer:</label>
+            <span class="helpText"
+              >The name of the drone manufacturer (e.g. Yuneec)</span
+            >
+            <input type="text" id="manufacturer" name="manufacturer" required />
+          </div>
+          <div class="itemWrapper">
+            <label for="name">*Model name:</label>
+            <span class="helpText"
+              >The name of the drone model (e.g. H520E)</span
+            >
+            <input type="text" id="name" name="name" required />
+          </div>
+        </div>
+
+        <div class="formRow">
+          <div class="itemWrapper">
+            <label for="class">Class (e.g., C0-C6):</label>
+            <span class="helpText"
+              >The UAS class of the drone, if not specified, leave empty</span
+            >
+            <input
+              type="text"
+              id="class"
+              name="class"
+              pattern="^[cC][0-6]$"
+              title="Please enter a valid class starting with 'C' followed by a number from 0 to 6"
+            />
+          </div>
+          <div class="itemWrapper">
+            <label for="endurance">*Endurance (minutes):</label>
+            <span class="helpText"
+              >Positive number with decimal points allowed - Maximum flight time
+            </span>
+            <input
+              type="number"
+              id="endurance"
+              name="endurance"
+              step="0.1"
+              min="0.1"
+              pattern="^(?!0\.0*$)\d+(\.\d+)?$"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="formRow">
+          <div class="itemWrapper">
+            <label for="weight">Weight (grams):</label>
+            <span class="helpText"
+              >Positive whole numbers allowed only - he weight of the drone,
+              leave empty if not specified</span
+            >
+            <input
+              type="number"
+              id="weight"
+              name="weight"
+              min="1"
+              pattern="[1-9]\d*"
+            />
+          </div>
+          <div class="itemWrapper">
+            <label for="max_takeoff">*Max Takeoff (grams):</label>
+            <span class="helpText"
+              >Positive whole numbers allowed only - Maximum takeoff weight of
+              the drone</span
+            >
+            <input
+              type="number"
+              id="max_takeoff"
+              name="max_takeoff"
+              min="1"
+              pattern="[1-9]\d*"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="formRow">
+          <div class="itemWrapper">
+            <label for="has_camera">Has Camera:</label>
+            <select id="has_camera" name="has_camera" required>
+              <option value="unknown">Unknown</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="itemWrapper">
+            <label for="is_toy">Is Toy:</label>
+            <select id="is_toy" name="is_toy" required>
+              <option value="unknown">Unknown</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="itemWrapper" id="source">
+          <label for="source">*Source :</label>
+          <span class="helpText"
+            >The URL of the specification website from where the information was
+            obtained from</span
+          >
+          <input
+            type="text"
+            id="source"
+            name="source"
+            placeholder="https://us.yuneec.com/h520-series/info/"
+            required
+          />
+        </div>
+
+        <input
+          onload="onsubmitload()"
+          type="submit"
+          id="submit"
+          value="Submit"
+        />
+        <p
+          onload="onloadingelementload()"
+          style="
+            font-size: 12;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: none;
+          "
+          id="loading"
+        >
+          Loading, this may take a few seconds...
+        </p>
+      </form>
+
+      <footer>
+        Created and maintained by
+        <a href="https://dronetag.cz">Dronetag</a>
+      </footer>
+    </main>
+  </body>
+</html>
