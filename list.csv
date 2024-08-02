@@ -7,7 +7,7 @@ manufacturer,name,class,weight,max_takeoff,endurance,has_camera,is_toy
 3D Robotics,X8+,none,2600,2600,15,,
 AgEagle,SENSEFLY eBee,C2,1600,1600,55,,
 AirWood,CUBEE,none,80,80,8,,false
-ANT-X,ARIES,none,7000,11000,33,false,false
+ANT-X,ARIES,none,7000,11000,33,,
 Autel,Dragonfish,none,7000,8500,120,,
 Autel,Evo,none,863,1000,30,,
 Autel,Evo 2 Dual,none,1150,2000,40,,
@@ -32,12 +32,14 @@ DJI,Agras T16,none,41000,42000,18,,
 DJI,Agras T20,none,42600,47500,9,,
 DJI,Agras T30,none,26400,78000,20.5,,
 DJI,Agras T40,none,50000,101000,18,,
-DJI,Air 2S,none,595,595,31,true,
-DJI,Avata,none,410,410,18,true,
+DJI,Air 2S,none,595,595,31,,
+DJI,Air 3,C1,720,720,46,,
+DJI,Avata,none,410,410,18,,
+DJI,Avata,C1,377,377,23,,
 DJI,Flame Wheel F330,none,,1200,15,,
 DJI,Flame Wheel F450,none,,1600,15,,
 DJI,Flame Wheel F550,none,,2400,15,,
-DJI,FPV,none,795,795,20,true,
+DJI,FPV,none,795,795,20,,
 DJI,Inspire 1,none,2845,2845,18,,
 DJI,Inspire 1 Pro,none,2870,2870,15,,
 DJI,Inspire 1 Raw,none,2870,2870,15,,
@@ -77,7 +79,8 @@ DJI,Mavic Pro Platinum,none,734,734,30,,
 DJI,Mini 2,none,242,242,31,true,false
 DJI,Mini 2 SE,C0,246,246,31,true,
 DJI,Mini 3,C0,248,248,51,true,false
-DJI,Mini 3 Pro,C0,249,249,47,true,false
+DJI,Mini 3 Pro,C0,249,249,34,true,false
+DJI,Mini 4 Pro,C0,249,249,34,true,false
 DJI,Phantom 1,none,800,800,10,,
 DJI,Phantom 2,none,1000,1000,25,,
 DJI,Phantom 2 Vision,none,1160,1160,25,,
