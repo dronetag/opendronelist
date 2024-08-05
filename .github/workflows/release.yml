@@ -146,7 +146,7 @@ jobs:
           name: github-pages
           path: ./out
       - name: Deploy Github Pages # Deploy to pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
         id: deployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
