@@ -30,7 +30,7 @@ jobs:
           python convertors/json_convertor.py
 
       - name: Upload converted files # Upload 3 JSON files outputted from py script
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: json
           path: ./out
@@ -56,7 +56,7 @@ jobs:
           python convertors/html_convertor.py
 
       - name: Upload converted files # Upload html and CSS + fonts outputted from py script
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: html
           path: ./out
@@ -67,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download JSON artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: json
           path: ./json
@@ -126,12 +126,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Download JSON artifact # Download JSON out file
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: json
           path: ./json
       - name: Download HTML artifact # Download HTML out file
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: html
           path: ./html
